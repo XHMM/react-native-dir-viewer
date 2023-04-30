@@ -43,6 +43,7 @@ export const DirReader: FC<DirReaderProps> = (props) => {
 
   useEffect(() => {
     updateFiles();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const updateFiles = async (newIdx?: number) => {
@@ -380,6 +381,7 @@ const DirItem: FC<{
             gap: 15,
           }}
           onLayout={() => {
+            // @ts-ignore
             scrollViewRef.current?.measure((...data) => {
               const [, , , scrollViewHeight, , y1] = data;
               actionRef.current?.measure((...data2) => {
