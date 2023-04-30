@@ -1,31 +1,54 @@
 # react-native-dir-viewer
 
-react-native-dir-viewer provide a component for intuitively visualizing directory structure (a simple gui for your directory)
+`react-native-dir-viewer` provide a component for intuitively visualizing directory structure (aka a simple GUI for your directory).
+
+It supports:
+- view basic info: modify time and content size
+- navigate with back and forward (just like mac finder)
+- create/rename/delete file/dir
+- file edit (utf-8 content only)
+
+<img src="./static/ios-preview.png" width="300">
 
 ## Installation
+The lib depends on [`react-native-file-access`](https://github.com/alpha0010/react-native-file-access) for file operation, you need to install it first:
 
 ```sh
+npm install react-native-file-access
+npx pod-install
+```
+
+Then:
+```shell
 npm install react-native-dir-viewer
 ```
 
 ## Usage
 
-```js
-import { multiply } from 'react-native-dir-viewer';
+```tsx
+import * as React from 'react';
 
-// ...
+import { SafeAreaView } from 'react-native';
+import { Dirs } from 'react-native-file-access';
+import { DirReader } from 'react-native-dir-viewer';
 
-const result = await multiply(3, 7);
+export default function App() {
+  return (
+    <SafeAreaView>
+      <DirReader
+        baseDir={Dirs.CacheDir}
+        listHeight={400}
+        containerStyle={{}}
+      />
+    </SafeAreaView>
+  );
+}
+
 ```
 
-## Contributing
+Currently `DirReader` component not provide custom style control capability, it's mainly used for debug purpose
 
-See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
 
 ## License
 
 MIT
-
----
-
-Made with [create-react-native-library](https://github.com/callstack/react-native-builder-bob)
