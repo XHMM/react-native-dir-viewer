@@ -37,7 +37,9 @@ export default function App() {
     <SafeAreaView>
       <DirReader
         baseDir={Dirs.CacheDir}
+        /* optional */
         listHeight={400}
+        /* optional */
         containerStyle={{}}
       />
     </SafeAreaView>

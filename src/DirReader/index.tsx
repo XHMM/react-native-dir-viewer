@@ -276,7 +276,6 @@ const DirItem: FC<{
           return {
             flexDirection: 'row',
             alignItems: 'center',
-            gap: 8,
             backgroundColor: isDir
               ? state.pressed
                 ? `rgba(0, 0, 0, 0.12)`
@@ -288,14 +287,19 @@ const DirItem: FC<{
         }}
         onPress={onPress}
       >
-        <Text>{isDir ? '📁' : '📄'}</Text>
+        <Text
+          style={{
+            marginRight: 8,
+          }}
+        >
+          {isDir ? '📁' : '📄'}
+        </Text>
 
         <View
           style={{
             flexDirection: 'row',
             flexGrow: 1,
             alignItems: 'center',
-            gap: 5,
             justifyContent: 'space-between',
           }}
         >
@@ -331,13 +335,13 @@ const DirItem: FC<{
               style={{
                 flexDirection: 'row',
                 alignItems: 'center',
-                gap: 10,
               }}
             >
               <Text
                 style={{
                   fontSize: 12,
                   color: 'gray',
+                  marginRight: 10,
                 }}
               >
                 {format(file.lastModified)}
@@ -373,13 +377,7 @@ const DirItem: FC<{
       {showActionBar ? (
         <View
           ref={actionRef}
-          style={{
-            backgroundColor: 'rgb(218,218,218)',
-            paddingVertical: 5,
-            flexDirection: 'row',
-            paddingHorizontal: 10,
-            gap: 15,
-          }}
+          style={styles.dirItemActionBarWrapper}
           onLayout={() => {
             // @ts-ignore
             scrollViewRef.current?.measure((...data) => {
@@ -396,14 +394,23 @@ const DirItem: FC<{
             });
           }}
         >
-          <TouchableOpacity onPress={onDeletePress}>
+          <TouchableOpacity
+            onPress={onDeletePress}
+            style={styles.dirItemActionItem}
+          >
             <Text>Delete</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={onRenamePress}>
+          <TouchableOpacity
+            onPress={onRenamePress}
+            style={styles.dirItemActionItem}
+          >
             <Text>Rename</Text>
           </TouchableOpacity>
           {isDir ? null : (
-            <TouchableOpacity onPress={onEditPress}>
+            <TouchableOpacity
+              onPress={onEditPress}
+              style={styles.dirItemActionItem}
+            >
               <Text>Edit</Text>
             </TouchableOpacity>
           )}
@@ -459,11 +466,15 @@ const ActionHandler: FC<{
     <View
       style={{
         flexDirection: 'row',
-        gap: 15,
         alignItems: 'center',
       }}
     >
-      <TouchableOpacity onPress={onNewDirPress}>
+      <TouchableOpacity
+        onPress={onNewDirPress}
+        style={{
+          marginRight: 15,
+        }}
+      >
         <Text>New dir</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={onNewFilePress}>

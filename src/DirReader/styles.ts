@@ -8,7 +8,6 @@ export const styles = StyleSheet.create({
   },
   navWrapper: {
     flexDirection: 'row',
-    gap: 5,
   },
   navItem: {
     fontSize: 20,
@@ -25,5 +24,16 @@ export const styles = StyleSheet.create({
     backgroundColor: 'rgba(0,0,0,0.03)',
     borderBottomColor: 'rgba(0,0,0,0.1)',
     borderBottomWidth: 1,
+  },
+
+  dirItemActionBarWrapper: {
+    backgroundColor: 'rgb(218,218,218)',
+    paddingVertical: 5,
+    flexDirection: 'row',
+    paddingHorizontal: 10,
+    // gap: 15,
+  },
+  dirItemActionItem: {
+    marginRight: 15,
   },
 });
